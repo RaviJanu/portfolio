@@ -290,30 +290,30 @@ main { position: relative; z-index: 1; }
   position: relative;
   z-index: 1;
 }
-.photo-badge {
+.cv-download-btn {
   position: absolute;
-  bottom: 0;
+  bottom: -1.25rem;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--bg-800);
-  border: 1px solid var(--border-light);
+  background: var(--accent);
+  color: #fff;
+  border: none;
   border-radius: 100px;
-  padding: 0.5rem 1rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--text-secondary);
+  padding: 0.55rem 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
   white-space: nowrap;
-  backdrop-filter: blur(10px);
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(196,104,73,0.45);
+  transition: background 150ms, transform 150ms, box-shadow 150ms;
 }
-.photo-badge-dot {
-  width: 8px;
-  height: 8px;
-  background: #4CAF50;
-  border-radius: 50%;
-  animation: pulse-dot 2s ease-in-out infinite;
+.cv-download-btn:hover {
+  background: var(--accent-light);
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 8px 28px rgba(196,104,73,0.55);
 }
 
 /* ─── Section ─── */
