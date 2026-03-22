@@ -30,6 +30,9 @@ const scrollObserver = new IntersectionObserver((entries) => {
 
 sections.forEach(s => scrollObserver.observe(s));
 
+// ─── EmailJS init ───
+emailjs.init('uBAH50OtzdYarNyo0');
+
 // ─── Email Modal ───
 function openEmailModal() {
   document.getElementById('emailModal').classList.add('open');
@@ -48,18 +51,30 @@ function closeEmailModalOnBackdrop(event) {
 
 function sendEmail(event) {
   event.preventDefault();
-  const name    = document.getElementById('senderName').value.trim();
-  const from    = document.getElementById('senderEmail').value.trim();
-  const subject = document.getElementById('emailSubject').value.trim();
-  const message = document.getElementById('emailMessage').value.trim();
 
-  const body = `Hi Ravi,\n\n${message}\n\n---\nFrom: ${name}\nEmail: ${from}`;
-  const mailto = `mailto:januraviprakash@outlook.com`
-    + `?subject=${encodeURIComponent(subject)}`
-    + `&body=${encodeURIComponent(body)}`;
+  const btn = document.getElementById('sendBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
 
-  window.location.href = mailto;
-  closeEmailModal();
+  emailjs.send('service_965fgzc', 'template_2mt9jry', {
+    from_name:  document.getElementById('senderName').value.trim(),
+    from_email: document.getElementById('senderEmail').value.trim(),
+    subject:    document.getElementById('emailSubject').value.trim(),
+    message:    document.getElementById('emailMessage').value.trim(),
+  })
+  .then(() => {
+    btn.textContent = 'Sent!';
+    setTimeout(() => {
+      closeEmailModal();
+      event.target.reset();
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    }, 1500);
+  })
+  .catch(() => {
+    btn.textContent = 'Failed — try again';
+    btn.disabled = false;
+  });
 }
 
 // Close modal on Escape key

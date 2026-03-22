@@ -487,7 +487,7 @@
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
         </button>
       </div>
-      <p class="modal-subtitle">Fill in the details below — your default email app will open with everything ready to send.</p>
+      <p class="modal-subtitle">Fill in the details below and hit Send — I'll receive your message directly.</p>
       <form class="modal-form" onsubmit="sendEmail(event)">
         <div class="form-row">
           <div class="form-group">
@@ -509,15 +509,16 @@
         </div>
         <div class="modal-actions">
           <button type="button" class="btn-modal-cancel" onclick="closeEmailModal()">Cancel</button>
-          <button type="submit" class="btn-modal-send">
+          <button type="submit" class="btn-modal-send" id="sendBtn">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 6-12 6V8.5l8-2.5-8-2.5V1z" fill="currentColor"/></svg>
-            Open Email App
+            Send Message
           </button>
         </div>
       </form>
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="main.js"></script>
 
 </body>
